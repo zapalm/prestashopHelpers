@@ -392,7 +392,7 @@ class ValidateHelper extends \Validate
     public static function isDomain($domain)
     {
         if (static::isAscii($domain) && false !== strpos($domain, '.') && false === static::isPunycodeDomain($domain)) {
-            if (1 === preg_match('/^(?!.{254,})(?:(?!-)[A-Za-z0-9-]{1,63}(?<!-)\.){1,126}(?!-)[A-Za-z0-9-]{1,63}(?<!-)$/', $domain)) {
+            if (1 === preg_match('/^(?!.{254,})(?:(?!-)[A-Za-z0-9-]{1,63}(?<!-)\.){1,126}(?!-)(?![0-9]*$)[A-Za-z0-9-]{1,63}(?<!-)$/', $domain)) {
                 return true;
             }
         }
