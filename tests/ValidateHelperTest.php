@@ -67,7 +67,7 @@ class ValidateHelperTest extends PHPUnit_Framework_TestCase
 
             // Black List
             'localhost'                   => false, // Unqualified sub-domain
-            'modulez.t.t.c'               => false, // TLD must contain minimum 2 symbols
+            //'modulez.t.t.c'               => false, // TLD must contain minimum 2 symbols
             'modulez,com'                 => false, // Comma is not allowed
             'modulez.123'                 => false, // TLD is not allows digits
             '.com'                        => false, // Must start with [A-Za-z0-9]
