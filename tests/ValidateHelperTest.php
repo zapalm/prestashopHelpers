@@ -63,6 +63,7 @@ class ValidateHelperTest extends PHPUnit_Framework_TestCase
             'modulez.com.au'              => true,
             'modulez.t.t.co'              => true,
             'this.domain.has.253.characters.in.its.litteral.representation.empty.content.following.empty0000000000000000000000000000000000000000000000000000000000.empty0000000000000000000000000000000000000000000000000000000000.empty0000000000000000000000.example.com' => true,
+            'o.k.l.e.v.e.l.l.e.v.e.l.l.e.v.e.l.l.e.v.e.l.l.e.v.e.l.l.e.v.e.l.l.e.v.e.l.l.e.v.e.l.l.e.v.e.l.l.e.v.e.l.l.e.v.e.l.l.e.v.e.l.l.e.v.e.l.l.e.v.e.l.l.e.v.e.l.l.e.v.e.l.l.e.v.e.l.l.e.v.e.l.l.e.v.e.l.l.e.v.e.l.l.e.v.e.l.l.e.v.e.l.l.e.v.e.l.l.e.v.e.l.l.e.v.e.l' => true,
 
             // Black List
             'localhost'                   => false, // Unqualified sub-domain
@@ -78,6 +79,7 @@ class ValidateHelperTest extends PHPUnit_Framework_TestCase
             'modulez-.com'                => false, // Cannot end with the hyphen
             'sub.modulez-.com'            => false, // ...
             'this.domain.has.254.characters.in.its.litteral.representation.empty.content.following.empty0000000000000000000000000000000000000000000000000000000000.empty0000000000000000000000000000000000000000000000000000000000.empty00000000000000000000000.example.com' => false, //too long litteral representation
+            'k.o.l.e.v.e.l.l.e.v.e.l.l.e.v.e.l.l.e.v.e.l.l.e.v.e.l.l.e.v.e.l.l.e.v.e.l.l.e.v.e.l.l.e.v.e.l.l.e.v.e.l.l.e.v.e.l.l.e.v.e.l.l.e.v.e.l.l.e.v.e.l.l.e.v.e.l.l.e.v.e.l.l.e.v.e.l.l.e.v.e.l.l.e.v.e.l.l.e.v.e.l.l.e.v.e.l.l.e.v.e.l.l.e.v.e.l.l.e.v.e.l.l.e.v.e.l.l' => false, // labels count is limited to 127
 
             // Black List (invalid, because these are IDN domains)
             'престашоп.рф'                => false, // Russian, Unicode
