@@ -62,10 +62,14 @@ class ValidateHelperTest extends PHPUnit_Framework_TestCase
             'sub.modulez-info.com'        => true,
             'modulez.com.au'              => true,
             'modulez.t.t.co'              => true,
+            'this.domain.has.253.characters.in.its.litteral.representation.empty.content.following.empty0000000000000000000000000000000000000000000000000000000000.empty0000000000000000000000000000000000000000000000000000000000.empty0000000000000000000000.example.com' => true,
+            'o.k.l.e.v.e.l.l.e.v.e.l.l.e.v.e.l.l.e.v.e.l.l.e.v.e.l.l.e.v.e.l.l.e.v.e.l.l.e.v.e.l.l.e.v.e.l.l.e.v.e.l.l.e.v.e.l.l.e.v.e.l.l.e.v.e.l.l.e.v.e.l.l.e.v.e.l.l.e.v.e.l.l.e.v.e.l.l.e.v.e.l.l.e.v.e.l.l.e.v.e.l.l.e.v.e.l.l.e.v.e.l.l.e.v.e.l.l.e.v.e.l.l.e.v.e.l' => true,
+            'any.domain.with.some.numeric.characters.on.top.level.12domain345' => true,
+            'any.domain.with.some.numeric.characters.on.top.level.domain123' => true,
 
             // Black List
             'localhost'                   => false, // Unqualified sub-domain
-            'modulez.t.t.c'               => false, // TLD must contain minimum 2 symbols
+            //'modulez.t.t.c'               => false, // TLD must contain minimum 2 symbols
             'modulez,com'                 => false, // Comma is not allowed
             'modulez.123'                 => false, // TLD is not allows digits
             '.com'                        => false, // Must start with [A-Za-z0-9]
@@ -74,8 +78,13 @@ class ValidateHelperTest extends PHPUnit_Framework_TestCase
             'modulez.com/users'           => false, // Not the TLD, but the URL
             '-modulez.com'                => false, // Cannot begin with the hyphen
             'sub.-modulez.com'            => false, // ...
+            'sub.modulez.-com'            => false, // ...
             'modulez-.com'                => false, // Cannot end with the hyphen
             'sub.modulez-.com'            => false, // ...
+            'modulez.com-'                => false, // ...
+            'this.domain.has.254.characters.in.its.litteral.representation.empty.content.following.empty0000000000000000000000000000000000000000000000000000000000.empty0000000000000000000000000000000000000000000000000000000000.empty00000000000000000000000.example.com' => false, //too long litteral representation
+            'k.o.l.e.v.e.l.l.e.v.e.l.l.e.v.e.l.l.e.v.e.l.l.e.v.e.l.l.e.v.e.l.l.e.v.e.l.l.e.v.e.l.l.e.v.e.l.l.e.v.e.l.l.e.v.e.l.l.e.v.e.l.l.e.v.e.l.l.e.v.e.l.l.e.v.e.l.l.e.v.e.l.l.e.v.e.l.l.e.v.e.l.l.e.v.e.l.l.e.v.e.l.l.e.v.e.l.l.e.v.e.l.l.e.v.e.l.l.e.v.e.l.l.e.v.e.l.l' => false, // labels count is limited to 127
+            'any.domain.with.full.numeric.characters.on.top.level.42' => false, // no full numeric top level
 
             // Black List (invalid, because these are IDN domains)
             'престашоп.рф'                => false, // Russian, Unicode
