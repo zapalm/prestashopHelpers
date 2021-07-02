@@ -64,6 +64,8 @@ class ValidateHelperTest extends PHPUnit_Framework_TestCase
             'modulez.t.t.co'              => true,
             'this.domain.has.253.characters.in.its.litteral.representation.empty.content.following.empty0000000000000000000000000000000000000000000000000000000000.empty0000000000000000000000000000000000000000000000000000000000.empty0000000000000000000000.example.com' => true,
             'o.k.l.e.v.e.l.l.e.v.e.l.l.e.v.e.l.l.e.v.e.l.l.e.v.e.l.l.e.v.e.l.l.e.v.e.l.l.e.v.e.l.l.e.v.e.l.l.e.v.e.l.l.e.v.e.l.l.e.v.e.l.l.e.v.e.l.l.e.v.e.l.l.e.v.e.l.l.e.v.e.l.l.e.v.e.l.l.e.v.e.l.l.e.v.e.l.l.e.v.e.l.l.e.v.e.l.l.e.v.e.l.l.e.v.e.l.l.e.v.e.l.l.e.v.e.l' => true,
+            'any.domain.with.some.numeric.characters.on.top.level.12domain345' => true,
+            'any.domain.with.some.numeric.characters.on.top.level.domain123' => true,
 
             // Black List
             'localhost'                   => false, // Unqualified sub-domain
@@ -82,6 +84,7 @@ class ValidateHelperTest extends PHPUnit_Framework_TestCase
             'modulez.com-'                => false, // ...
             'this.domain.has.254.characters.in.its.litteral.representation.empty.content.following.empty0000000000000000000000000000000000000000000000000000000000.empty0000000000000000000000000000000000000000000000000000000000.empty00000000000000000000000.example.com' => false, //too long litteral representation
             'k.o.l.e.v.e.l.l.e.v.e.l.l.e.v.e.l.l.e.v.e.l.l.e.v.e.l.l.e.v.e.l.l.e.v.e.l.l.e.v.e.l.l.e.v.e.l.l.e.v.e.l.l.e.v.e.l.l.e.v.e.l.l.e.v.e.l.l.e.v.e.l.l.e.v.e.l.l.e.v.e.l.l.e.v.e.l.l.e.v.e.l.l.e.v.e.l.l.e.v.e.l.l.e.v.e.l.l.e.v.e.l.l.e.v.e.l.l.e.v.e.l.l.e.v.e.l.l' => false, // labels count is limited to 127
+            'any.domain.with.full.numeric.characters.on.top.level.42' => false, // no full numeric top level
 
             // Black List (invalid, because these are IDN domains)
             'престашоп.рф'                => false, // Russian, Unicode
