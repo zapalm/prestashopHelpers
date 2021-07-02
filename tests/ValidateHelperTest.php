@@ -62,6 +62,7 @@ class ValidateHelperTest extends PHPUnit_Framework_TestCase
             'sub.modulez-info.com'        => true,
             'modulez.com.au'              => true,
             'modulez.t.t.co'              => true,
+            'this.domain.has.253.characters.in.its.litteral.representation.empty.content.following.empty0000000000000000000000000000000000000000000000000000000000.empty0000000000000000000000000000000000000000000000000000000000.empty0000000000000000000000.example.com' => true,
 
             // Black List
             'localhost'                   => false, // Unqualified sub-domain
@@ -76,6 +77,7 @@ class ValidateHelperTest extends PHPUnit_Framework_TestCase
             'sub.-modulez.com'            => false, // ...
             'modulez-.com'                => false, // Cannot end with the hyphen
             'sub.modulez-.com'            => false, // ...
+            'this.domain.has.254.characters.in.its.litteral.representation.empty.content.following.empty0000000000000000000000000000000000000000000000000000000000.empty0000000000000000000000000000000000000000000000000000000000.empty00000000000000000000000.example.com' => false, //too long litteral representation
 
             // Black List (invalid, because these are IDN domains)
             'престашоп.рф'                => false, // Russian, Unicode
